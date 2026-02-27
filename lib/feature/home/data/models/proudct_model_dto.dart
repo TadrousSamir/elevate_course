@@ -1,42 +1,104 @@
+import 'package:elevate_course/feature/home/data/models/response/product_response.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'prouduct_model_dto.g.dart';
 
-import 'package:elevate_course/feature/home/domain/entities/product_entity.dart';
-
-class ProudctModelDto  {
-  int? id;
-  String? name;
+@JsonSerializable()
+class ProuductModelDTO {
+  @JsonKey(name: "sold")
+  int? sold;
+  @JsonKey(name: "images")
+  List<String>? images;
+  @JsonKey(name: "subcategory")
+  List<Subcategory>? subcategory;
+  @JsonKey(name: "ratingsQuantity")
+  int? ratingsQuantity;
+  @JsonKey(name: "_id")
+  String? id;
+  @JsonKey(name: "title")
+  String? title;
+  @JsonKey(name: "slug")
+  String? slug;
+  @JsonKey(name: "description")
   String? description;
-  double? price;
-  String? image;
+  @JsonKey(name: "quantity")
+  int? quantity;
+  @JsonKey(name: "price")
+  int? price;
+  @JsonKey(name: "imageCover")
+  String? imageCover;
+  @JsonKey(name: "category")
+  Category? category;
+  @JsonKey(name: "brand")
+  Brand? brand;
+  @JsonKey(name: "ratingsAverage")
+  double? ratingsAverage;
+  @JsonKey(name: "createdAt")
+  DateTime? createdAt;
+  @JsonKey(name: "updatedAt")
+  DateTime? updatedAt;
+  @JsonKey(name: "id")
+  String? datumId;
 
-  ProudctModelDto({this.id, this.name, this.description, this.price, this.image});
+  ProuductModelDTO({
+    this.sold,
+    this.images,
+    this.subcategory,
+    this.ratingsQuantity,
+    this.id,
+    this.title,
+    this.slug,
+    this.description,
+    this.quantity,
+    this.price,
+    this.imageCover,
+    this.category,
+    this.brand,
+    this.ratingsAverage,
+    this.createdAt,
+    this.updatedAt,
+    this.datumId,
+  });
 
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'description': description,
-      'price': price,
-      'image': image,
-    };
-  }
+  ProuductModelDTO copyWith({
+    int? sold,
+    List<String>? images,
+    List<Subcategory>? subcategory,
+    int? ratingsQuantity,
+    String? id,
+    String? title,
+    String? slug,
+    String? description,
+    int? quantity,
+    int? price,
+    String? imageCover,
+    Category? category,
+    Brand? brand,
+    double? ratingsAverage,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? datumId,
+  }) =>
+      ProuductModelDTO(
+        sold: sold ?? this.sold,
+        images: images ?? this.images,
+        subcategory: subcategory ?? this.subcategory,
+        ratingsQuantity: ratingsQuantity ?? this.ratingsQuantity,
+        id: id ?? this.id,
+        title: title ?? this.title,
+        slug: slug ?? this.slug,
+        description: description ?? this.description,
+        quantity: quantity ?? this.quantity,
+        price: price ?? this.price,
+        imageCover: imageCover ?? this.imageCover,
+        category: category ?? this.category,
+        brand: brand ?? this.brand,
+        ratingsAverage: ratingsAverage ?? this.ratingsAverage,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+        datumId: datumId ?? this.datumId,
+      );
 
-  factory ProudctModelDto.fromJson(Map<String, dynamic> json) {
-    return ProudctModelDto(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-      price: json['price'],
-      image: json['image'],
-    );
-  }
+  factory ProuductModelDTO.fromJson(Map<String, dynamic> json) => _$ProuductModelDTOFromJson(json);
 
-  ProductEntity toDomain() {
-    return ProductEntity(
-      id: id ?? 0,
-      title: name ?? "",
-      description: description ?? "",
-      price: price ?? 0,
-      image: image ?? "",
-    );
-  }
+  Map<String, dynamic> toJson() => _$ProuductModelDTOToJson(this);
 }

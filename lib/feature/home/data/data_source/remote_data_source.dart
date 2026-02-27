@@ -8,7 +8,7 @@ class RemoteDataSource implements RemoteDataSourceContract{
    RemoteDataSource (this.apiClient);
   final ApiClient apiClient;
   @override
-  Future<List<ProudctModelDto>> getProducts() {
+  Future<List<ProuductModelDTO>> getProducts() {
     return apiClient.getProducts();
 
   }

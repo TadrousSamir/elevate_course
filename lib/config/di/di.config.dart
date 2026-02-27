@@ -31,7 +31,6 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
-    gh.factory<_i110.ApiClient>(() => _i110.ApiClient());
     gh.factory<_i858.RemoteDataSourceContract>(
       () => _i138.RemoteDataSource(gh<_i110.ApiClient>()),
     );
